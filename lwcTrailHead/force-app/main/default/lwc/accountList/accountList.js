@@ -17,12 +17,12 @@ export default class AccountList extends LightningElement {
   accountlist;
 
   @wire(getAccounts)
-  wiredAccount(response) {
-    if (response.data) {
+  wiredAccount({error,data}) {
+    if (data) {
      console.log('ebcontre data');
-     this.accountlist = response;
+     this.accountlist = data;
       console.log(`asigno respuesta `);
-    } else if (response.error) {
+    } else if (error) {
       this.error = response.error;
       this.record = undefined;
     }
